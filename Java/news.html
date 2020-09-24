@@ -1,0 +1,122 @@
+<HTML><HEAD>
+<TITLE>Your Page Title</TITLE>
+<script language="JavaScript">
+<!-- Original:  news scroller v2.0 rev 1 11mar00 -->
+<!-- Original:  Dion (biab@iinet.net.au -->
+<!-- Web Site:  http://members.iinet.net.au/~biab -->
+
+// blank is the location of an invisible gif image.
+var blank = "blank.gif";
+
+//floating = true; // place news scroller anywhere on the page
+topedge = 8;  // location of news box from top of page when floating
+
+leftedge = 18;  // location of news box from left edge when floating
+
+floating = false; // false looks for the DIV named 'place'
+// DIV place can be stored within a table cell to allow accurate
+// placement of the news scroller
+// floating = true; // place the news scroller anywhere on the page
+
+boxheight = 100;  // height of news box
+boxwidth = 240;  // width of news box
+scrollheight = 350; // total height of all data to be scrolled
+speed = 1; // scrolling speed (line step size)
+
+delay = 100; // .0100 second delay before next line srolled (1000=1sec)
+source=""; // name of HTML page to load and replace the news.
+// the original news DIV must be inplace but can contain anything
+
+function scrollnews(cliptop)
+ { if (document.layers)
+    { newsDiv = document.news;
+      nDc=newsDiv.clip;
+      nDc.top = cliptop;
+      nDc.bottom = cliptop + boxheight;
+      nDc.left = 0;
+      nDc.right = boxwidth + leftedge;
+      newsDiv.left = (floating)?leftedge:document.place.pageX
+
+      newsDiv.top = (floating)?topedge - cliptop:document.place.pageY-cliptop; }
+   else
+    { newsDiv = news.style;
+      newsDiv.clip = "rect(" + cliptop + "px " + (boxwidth + leftedge) + "px " + (cliptop + boxheight) + "px 0px)";
+      newsDiv.pixelLeft = (floating)?leftedge:document.all.place.offsetLeft;
+      newsDiv.pixelTop = (floating)?topedge - cliptop:document.all.place.offsetTop-cliptop; };
+   if(source>"")
+    { newsDiv.src=source; source=""; };
+   cliptop = (cliptop + speed) % (scrollheight + boxheight);
+
+   newsDiv.visibility='visible';
+   setTimeout("scrollnews(" + cliptop + ")", delay); };
+
+</script>
+
+</HEAD>
+<BODY BGCOLOR="white" onload="scrollnews(0);">
+
+<center>
+<TABLE BORDER=0 WIDTH=486>
+<TR><TD>
+Put your content to appear above the scroller here. This sample is set
+up in a table format; you can modify it as desired to suit your
+purposes.
+</TD></TR>
+  <TR><TD align=middle>
+<table cellpadding=0 width=240><tr><td width=240 height=104 valign="top"><!-- Example of non-floating news scroller in a table cell -->
+<div id="place" style="HEIGHT:
+ 100px; LEFT: 0px; POSITION: relative; TOP: 0px; WIDTH: 240px" 
+           ></div>
+</td></tr></table>
+
+<div id="news" style="BORDER-BOTTOM-WIDTH: 0px;
+  BORDER-LEFT-WIDTH: 0px; BORDER-RIGHT-WIDTH: 0px;
+  BORDER-TOP-WIDTH: 0px; CLIP: rect(10px 10px 10px 10px); HEIGHT: 100px; LEFT: 0px; PADDING-BOTTOM: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px; POSITION: absolute; TOP: 0px; WIDTH: 200px" 
+     >
+ <table border=0 cellpadding=0 cellspacing=0 bgcolor="white"><tr>
+          <td>
+  <script language="javascript">
+   document.write('<img src=' + blank + ' width='+boxwidth+' height='+boxheight+'><br>');
+  </script>
+<!-- Your News Items are Here -->
+News Scroller Version 2.<br>
+You can choose between<br>
+floating and fixed placement<br>
+
+where floating can place the<br>
+news scroller anywhere on the<br>
+page.<br>
+When floating=false; the news<br>
+scroller will find the DIV<br>
+named 'place' and cover this<br>
+DIV exaclty. Therefore you can<br>
+position the news scroller on<br>
+the page with relation to all<br>
+other objects and even embed<br>
+it within a table cell.<br>
+News Scroller can contain any<br>
+HTML content including Links<br>
+and Images.<br>
+<a href="http://members.iinet.net.au/~biab" target="_blank">Biab Homepage</a><br><!-- End Of Your News Items --> 
+   <script language="javascript">
+    document.write('<br><img src=' + blank + ' width='+boxwidth+' height='+boxheight+'>');
+   </script>
+  </td></tr>
+ </table>
+</div>
+</TD></TR>
+  <TR><TD>
+<p>
+Modify the content and format to suit your individual requirements.
+<p>
+<p>
+There is a complete help file available on the <a
+ 
+      href="http://members.iinet.net.au/~biab">Yoboseyo Javascript</a> site. Additionally, there is a different version that 
+      provides a UI control panel, enabling visitors to your site to increase or 
+      decrease scroll speed as well as pause and restart the scrolling.</p> 
+       
+</TD></TR></TABLE></center>
+
+</BODY>
+</HTML>
