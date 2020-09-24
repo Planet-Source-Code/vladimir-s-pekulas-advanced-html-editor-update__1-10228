@@ -1,0 +1,70 @@
+<!--- Image gallery. 
+	  Use:  <body onLoad="gallery();"> --->
+
+<script language="JavaScript">
+<!-- Hide from old browsers
+// Copyright © 2000 Casper HTML
+	var i = 1
+	images = new Array
+	images[1] = "YOUR FIRST IMAGE"
+	images[2] = "IMAGE2"
+	images[3] = "IMAGE3"
+	images[4] = "IMAGE4"
+	images[5] = "IMAGE5"
+	images[6] = "YOUR LAST IMAGE"
+
+function gallery(){
+	if (i == 1){
+		document.gallery.previous.value="       "}
+}
+function previmg(){
+	if (i != 1) {
+		i --
+		document.img.src = images[i]
+		document.gallery.next.value = "Next"}
+	if (i == 1) {
+		document.gallery.previous.value="        "}
+	
+}
+
+function nextimg(){
+	if (i != 6) {
+		i ++
+		document.gallery.previous.value="Previous"
+		image = images[i]
+		document.img.src = image}
+	if (i == 6){
+		document.gallery.next.value="    ";}
+}
+
+function pickrand(){
+	var imagenumber = 6 ;
+	var randomnumber = Math.random() ;
+	var rand1 = Math.round( (imagenumber-1) * randomnumber) + 1;
+	var randimage = images[rand1]
+	document.img.src = randimage
+	i = rand1
+	if (i == 1){
+		document.gallery.previous.value="        ";}
+	else {
+		document.gallery.previous.value="Previous";}
+	if (i == 6){
+		document.gallery.next.value="    ";}
+	else {
+		document.gallery.next.value="Next";}
+}
+
+function firstimg(){
+	i = 1
+	document.img.src = images[i];
+	document.gallery.previous.value="        ";
+	document.gallery.next.value="Next"
+}
+function lastimg(){
+	i = 6
+	document.img.src = images[i];
+	document.gallery.next.value="    "
+	document.gallery.previous.value="Previous"
+}
+// -- End Hiding Here -->
+</script>

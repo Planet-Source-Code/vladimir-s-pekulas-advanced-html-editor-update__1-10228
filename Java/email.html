@@ -1,0 +1,87 @@
+<!--- Copyright (C) 2000 Casper HTML --->
+<html>
+<script language="JavaScript">
+<!--
+function validate_form() {
+  validity = true; // assume valid
+  if (!check_empty(document.form.NAME.value))
+  	{ validity = false; alert('Name field is empty!'); }
+  if (!check_email(document.form.EMAIL.value))
+  	{ validity = false; alert('Email address is invalid!'); }
+  if (!check_empty(document.form.COMPANY.value))
+  	{ validity = false; alert('Company field is empty!'); }
+  if (!check_empty(document.form.ADDRESS_LINE1.value))
+  	{ validity = false; alert('Address field is empty!'); }
+  if (!check_empty(document.form.CITY.value))
+  	{ validity = false; alert('City field is empty!'); }
+  if (!check_empty(document.form.STATE.value))
+  	{ validity = false; alert('State field is empty!'); }
+  if (!check_empty(document.form.ZIP_CODE.value))
+  	{ validity = false; alert('Zip code field is empty!'); }
+  if (validity)
+  	alert ("Needed entries have been verified. "
+  		+ "Your form is now being passed to your browser's "
+  		+ "Mail Delivery Sub-System.");
+  return validity;
+}
+
+function check_empty(text) {
+  return (text.length > 0); // returns false if empty
+}
+
+function check_email(address) {
+  if ((address == "")
+    || (address.indexOf ('@') == -1)
+    || (address.indexOf ('.') == -1))
+      return false;
+  return true;
+}
+// -->
+</script>
+  	
+  
+<!-- CHANGE EMAIL ADDRESS IN ACTION OF FORM -->
+
+<form name="form"
+ method="post"
+ action="mailto:nobody@nowhere.com ?SUBJECT=No CGI Form Response"
+ enctype="text/plain"
+ onSubmit="return validate_form()">
+
+<!-- PLAIN HTML FORM ELEMENTS -->
+<!-- CHANGE THE validate_form() function to match your changes here -->
+
+<b>
+Name:<br><input type="text" size=50 name="NAME"><br><br>
+Email:<br><input type="text" size=50 name="EMAIL"><br><br>
+Company:<br><input type="text" size=50 name="COMPANY"><br><br>
+Mailing Address:<br><INPUT TYPE="TEXT" NAME="ADDRESS_LINE1" SIZE="50"><br>
+<INPUT TYPE="TEXT" NAME="ADDRESS_LINE2" SIZE="50"><br><br>
+
+<TABLE cellpadding=5><TR>
+<TD><b>City:</b><BR><INPUT TYPE="TEXT" NAME="CITY" SIZE="20">
+<TD><b>State:</b><BR><INPUT TYPE="TEXT" NAME="STATE" SIZE="2" maxlength=2>
+<TD><b>Zip Code:</b><BR><INPUT TYPE="TEXT" NAME="ZIP_CODE" SIZE="10"></tr></TABLE><br><br>
+
+What Products/Services are you interested in?<br></b>
+<INPUT TYPE="CHECKBOX" NAME="DESIGN" VALUE="yes">Web Page Design<br>
+<INPUT TYPE="CHECKBOX" NAME="JAVASCRIPT" VALUE="yes">JavaScript Contracting<br>
+<INPUT TYPE="CHECKBOX" NAME="NETWORK" VALUE="yes">Network Development<br>
+<INPUT TYPE="CHECKBOX" NAME="CONSULTING" VALUE="yes">Internet Consulting<br>
+<br>
+<b>How Did You Get to Our Site?<BR>
+<SELECT NAME="HowGotHere">
+<OPTION>Cut-N-Paste JavaScript Site
+<OPTION>Search Engine
+<OPTION SELECTED>Other
+</SELECT>
+<br><br>
+if other, be more specific:<br>
+<INPUT TYPE="TEXT" NAME="MORE_SPECIFIC" VALUE="We really want to know" SIZE="50"><br><br>
+Comments:<BR>
+<TEXTAREA NAME="COMMENTS" ROWS=8 COLS=50 wrap=virtual>Type any Special Instructions Here...</TEXTAREA>
+<br><br>
+<input type="submit" name="submit" value="I am Done">
+&nbsp<input type="reset" value="Start Over">
+</form>
+</html>

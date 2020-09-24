@@ -1,0 +1,65 @@
+
+
+<HTML><HEAD><TITLE>Your Web Page Title</TITLE>
+<!-- Cut-N-Paste JavaScript from ISN Toolbox 
+     Copyright 1996, Infohiway, Inc.  Restricted use is hereby
+     granted (commercial and personal OK) so long as this code
+     is not *directly* sold and the copyright notice is buried
+     somewhere deep in your HTML document.  A link to our site
+     http://www.infohiway.com is always appreciated of course,
+     but is absolutely and positively not necessary. ;-)   -->
+<SCRIPT LANGUAGE="JavaScript">
+<!--Hide JavaScript from Java-Impaired Browsers
+function isnscroll(hype) {
+ var shameless = 100
+ var prtspc = " ";
+ var col = 1;
+ /* You could use array here, but this is easy way to load messages
+    Unlike HTML documents, multiple adjoining spaces are preserved */
+ var promotional="Message Number One                            "
+ +"Message Number Two                            "
+ +"Message Number Three                          "
+ + "Message Number Four, etc.";
+ if (hype>shameless) {
+  hype--;
+  var cmd="isnscroll(" + hype + ")";
+  isntimer=window.setTimeout(cmd,shameless);
+ }
+ else if (hype<=shameless && hype>0) {
+  for (col=0;col<hype;col++) {
+   prtspc+=" ";
+  }
+  prtspc+=promotional;
+  hype--;
+  var cmd="isnscroll(" + hype + ")";
+  window.status=prtspc;
+  isntimer=window.setTimeout(cmd,shameless);
+ }
+ else if (hype<=0) {
+  if (-hype<promotional.length) {
+   prtspc+=promotional.substring(-hype,promotional.length);
+   hype--;
+   var cmd="isnscroll(" + hype + ")";
+   window.status=prtspc;
+   isntimer=window.setTimeout(cmd,100);
+  }
+  else {
+   window.status=" ";
+   isntimer=window.setTimeout("isnscroll(100)",75);
+  }
+ }
+}
+function startit() {
+ isntimer=window.setTimeout("isnscroll(100)",500);
+}
+// Stop Hiding Contents -->
+</SCRIPT>
+</HEAD>
+<BODY onLoad="startit()" BGCOLOR="white">
+
+<!--Your page content goes here-->
+
+<P>
+</BODY>
+</HTML>
+
